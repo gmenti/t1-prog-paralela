@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#PBS -m abe
+#PBS -V
+#PBS -l nodes=grad08:ppn=16:cluster-Grad,walltime=00:25:00
+#PBS -M giuseppe.menti@edu.pucrs.br
+#PBS -r n
+#PBS -j oe
+#PBS -d /home/pp12709/openmp/2020-02-closest_pair
+
+echo Running on host `hostname`
+echo Initial time is `date`
+echo Directory is `pwd`
+echo
+echo This jobs runs on the following nodes:
+echo `cat $PBS_NODEFILE | uniq`
+echo
+echo JOB_ID:
+echo `echo $PBS_JOBID`
+
+export OMP_NUM_THREADS=1
+./min-dist-bf > ./output/bf.output 2> ./output/bf.times
+
+# export OMP_NUM_THREADS=2
+# ./min-dist-bf > ./output/bf-x2.output 2> ./output/bf-x2.times
+
+# export OMP_NUM_THREADS=4
+# ./min-dist-bf > ./output/bf-x4.output 2> ./output/bf-x4.times
+
+# export OMP_NUM_THREADS=8
+# ./min-dist-bf > ./output/bf-x8.output 2> ./output/bf-x8.times
+
+# export OMP_NUM_THREADS=16
+./min-dist-bf > ./output/bf-x16.output 2> ./output/bf-x16.times
+
