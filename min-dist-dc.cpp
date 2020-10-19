@@ -89,6 +89,7 @@ double points_min_distance_dc(point_t *point, point_t *border, int l, int r)
     int i, j;
     if (r - l + 1 <= BRUTEFORCESSIZE)
     {
+        #pragma omp parallel for private (j, dist)
         for (i = l; i < r; i++)
         {
             for (j = i + 1; j <= r; j++)
@@ -118,16 +119,33 @@ double points_min_distance_dc(point_t *point, point_t *border, int l, int r)
     minDist = (dL < dR ? dL : dR);
 
     int k = l;
-    for (i = m - 1; i >= l && fabs(point[i].x - point[m].x) < minDist; i--)
-        border[k++] = point[i];
-    for (i = m + 1; i <= r && fabs(point[i].x - point[m].x) < minDist; i++)
-        border[k++] = point[i];
+    int mX = point[m].x;
+    bool distOk = false;
+
+    #pragma omp parallel for private (i, distOk)
+    for (i = m - 1; i >= l; i--) {
+        if (distOk) continue;
+        distOk = fabs(point[i].x - mX) < minDist;
+        if (distOk)
+            border[k++] = point[i];
+    }
+
+    distOk = false;
+
+    #pragma omp parallel for private (i, distOk)
+    for (i = m + 1; i <= r; i++) {
+        if (distOk) continue;
+        distOk = fabs(point[i].x - mX) < minDist;
+        if (distOk)
+            border[k++] = point[i];
+    }
 
     if (k - l <= 1)
         return minDist;
 
     sort(&border[l], &border[l] + (k - l), compY);
 
+    #pragma omp parallel for private (i, j, dist)
     for (i = l; i < k; i++)
     {
         for (j = i + 1; j < k && border[j].y - border[i].y < minDist; j++)
