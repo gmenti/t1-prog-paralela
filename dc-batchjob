@@ -21,15 +21,15 @@ echo `echo $PBS_JOBID`
 export OMP_NUM_THREADS=1
 ./min-dist-dc > ./output/dc.output 2> ./output/dc.times
 
-# export OMP_NUM_THREADS=2
-# ./min-dist-dc > ./output/dc-x2.output 2> ./output/dc-x2.times
+export OMP_NUM_THREADS=2
+./min-dist-dc > ./output/dc-x2.output 2> ./output/dc-x2.times
 
-# export OMP_NUM_THREADS=4
-# ./min-dist-dc > ./output/dc-x4.output 2> ./output/dc-x4.times
+export OMP_NUM_THREADS=4
+./min-dist-dc > ./output/dc-x4.output 2> ./output/dc-x4.times
 
-# export OMP_NUM_THREADS=8
-# ./min-dist-dc > ./output/dc-x8.output 2> ./output/dc-x8.times
+export OMP_NUM_THREADS=8
+./min-dist-dc > ./output/dc-x8.output 2> ./output/dc-x8.times
 
-# export OMP_NUM_THREADS=16
-# ./min-dist-dc > ./output/dc-x16.output 2> ./output/dc-x16.times
+export OMP_NUM_THREADS=16
+./min-dist-dc > ./output/dc-x16.output 2> ./output/dc-x16.times
 
