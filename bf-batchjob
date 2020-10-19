@@ -18,8 +18,8 @@ echo
 echo JOB_ID:
 echo `echo $PBS_JOBID`
 
-export OMP_NUM_THREADS=1
-./min-dist-bf > ./output/bf.output 2> ./output/bf.times
+# export OMP_NUM_THREADS=1
+# ./min-dist-bf > ./output/bf.output 2> ./output/bf.times
 
 # export OMP_NUM_THREADS=2
 # ./min-dist-bf > ./output/bf-x2.output 2> ./output/bf-x2.times
@@ -30,6 +30,6 @@ export OMP_NUM_THREADS=1
 # export OMP_NUM_THREADS=8
 # ./min-dist-bf > ./output/bf-x8.output 2> ./output/bf-x8.times
 
-# export OMP_NUM_THREADS=16
+export OMP_NUM_THREADS=16
 ./min-dist-bf > ./output/bf-x16.output 2> ./output/bf-x16.times
 
