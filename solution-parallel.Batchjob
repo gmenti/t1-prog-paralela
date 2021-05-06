@@ -20,6 +20,6 @@ echo `echo $PBS_JOBID`
 
 for NUM_THREADS in 2 4 8 16
 do
-export OMP_NUM_THREADS=NUM_THREADS
-echo `./solution-parallel 1> x$OMP_NUM_THREADS-saida.o$PBS_JOBID 2> x$OMP_NUM_THREADS-tempos.o$PBS_JOBID`
+echo `export OMP_NUM_THREADS=$NUM_THREADS`
+echo `./solution-parallel 1> x$NUM_THREADS-saida.o$PBS_JOBID 2> x$NUM_THREADS-tempos.o$PBS_JOBID`
 done
