@@ -9,7 +9,7 @@
 
 #define MAX_VAL 9999
 
-#define SIZE 20000
+#define SIZE 100000
 #define START 10000
 #define STEP  10000
 
