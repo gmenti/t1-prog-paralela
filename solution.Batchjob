@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#PBS -m abe
+#PBS -V
+#PBS -l nodes=1:ppn=1:cluster-Grad,walltime=00:05:00
+#PBS -M giuseppe.menti@edu.pucrs.br
+#PBS -r n
+#PBS -j oe
+#PBS -d /home/pp12718/t1-prog-paralela
+
+echo Running on host `hostname`
+echo Initial time is `date`
+echo Directory is `pwd`
+echo
+echo This jobs runs on the following nodes:
+echo `cat $PBS_NODEFILE | uniq`
+echo
+echo JOB_ID:
+echo `echo $PBS_JOBID`
+
+export OMP_NUM_THREADS=1
+./solution 1> ./output/x1-saida 2> ./output/x1-tempos
