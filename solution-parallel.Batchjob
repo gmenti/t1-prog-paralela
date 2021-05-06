@@ -2,7 +2,7 @@
 
 #PBS -m abe
 #PBS -V
-#PBS -l nodes=1:ppn=16:cluster-Grad,walltime=00:05:00
+#PBS -l nodes=1:ppn=16:cluster-Grad,walltime=00:30:00
 #PBS -M giuseppe.menti@edu.pucrs.br
 #PBS -r n
 #PBS -j oe
