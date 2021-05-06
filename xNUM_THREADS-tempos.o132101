@@ -1,0 +1,5 @@
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+10000 1.364647
+20000 5.390463
+30000 11.512276
