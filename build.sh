@@ -1,0 +1,1 @@
+gcc solution.c -o solution -fopenmp && gcc solution-parallel.c -o solution-parallel -fopenmp

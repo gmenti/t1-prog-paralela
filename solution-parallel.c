@@ -30,9 +30,11 @@ int maximum_sum_subsequence(int *arr, int n, int k)  {
 
     dp = (int **)malloc(n * sizeof(int *));
 
+    #pragma omp parallel for private (i)
     for (i=0; i<n; i++)
          dp[i] = (int *)malloc((k+1) * sizeof(int));
 
+    #pragma omp parallel for private (i, j)
     for (i = 0; i < n; i++) {
         // dp[i][0] = -1; // NÃO UTILIZADO
         dp[i][1] = arr[i];
@@ -40,26 +42,28 @@ int maximum_sum_subsequence(int *arr, int n, int k)  {
             dp[i][j] = -1;
     }
   
-    for (i = 1; i < n; i++) { 
-        for (j = 0; j < i; j++) { 
-            if (arr[j] < arr[i]) { 
-                for (l = 1; l <= k - 1; l++) { 
-                    if (dp[j][l] != -1) { 
+    for (l = 1; l <= k - 1; l++) { 
+        #pragma omp parallel for private (i, j) 
+        for (i = 1; i < n; i++) {
+            for (j = 0; j < i; j++) { 
+                if (arr[j] < arr[i]) { 
+                    if (dp[j][l] != -1) {
                         dp[i][l + 1] = MAX(dp[i][l + 1],dp[j][l] + arr[i]); 
                     } 
-                } 
-            } 
+                }
+            }
         }
-    } 
+    }
 
+    #pragma omp parallel for private (i)
     for (i = 0; i < n; i++) { 
         if (ans < dp[i][k]) 
             ans = dp[i][k]; 
     } 
 
+    #pragma omp parallel for private (i)
     for (i=0; i<n; i++)
         free((void *)dp[i]);
-
     free((void *)dp);
 
     return (ans == -1) ? 0 : ans;

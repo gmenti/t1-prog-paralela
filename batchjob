@@ -22,13 +22,13 @@ export OMP_NUM_THREADS=1
 ./solution 1> ./output/x1-saida 2> ./output/x1-tempos
 
 export OMP_NUM_THREADS=2
-./solution 1> ./output/x2-saida 2> ./output/x2-tempos
+./solution-parallel 1> ./output/x2-saida 2> ./output/x2-tempos
 
 export OMP_NUM_THREADS=4
-./solution 1> ./output/x4-saida 2> ./output/x4-tempos
+./solution-parallel 1> ./output/x4-saida 2> ./output/x4-tempos
 
 export OMP_NUM_THREADS=8
-./solution 1> ./output/x8-saida 2> ./output/x8-tempos
+./solution-parallel 1> ./output/x8-saida 2> ./output/x8-tempos
 
 export OMP_NUM_THREADS=16
-./solution 1> ./output/x16-saida 2> ./output/x16-tempos
+./solution-parallel 1> ./output/x16-saida 2> ./output/x16-tempos
