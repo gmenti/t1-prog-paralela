@@ -19,13 +19,13 @@ echo JOB_ID:
 echo `echo $PBS_JOBID`
 
 export OMP_NUM_THREADS=2
-./solution-parallel 1> ./output/x2-saida 2> ./output/x2-tempos
+./solution-parallel > x2-saida 2> x2-tempos
 
 export OMP_NUM_THREADS=4
-./solution-parallel 1> ./output/x4-saida 2> ./output/x4-tempos
+./solution-parallel > x4-saida 2> x4-tempos
 
 export OMP_NUM_THREADS=8
-./solution-parallel 1> ./output/x8-saida 2> ./output/x8-tempos
+./solution-parallel > x8-saida 2> x8-tempos
 
 export OMP_NUM_THREADS=16
-./solution-parallel 1> ./output/x16-saida 2> ./output/x16-tempos
+./solution-parallel > x16-saida 2> x16-tempos
