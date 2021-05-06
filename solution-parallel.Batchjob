@@ -19,7 +19,7 @@ echo JOB_ID:
 echo `echo $PBS_JOBID`
 
 export OMP_NUM_THREADS=2
-./solution-parallel 1> x2-saida 2> x2-tempos
+./solution-parallel 1> x2-saida.o`$PBS_JOBID` 2> x2-tempos.o`$PBS_JOBID`
 
 export OMP_NUM_THREADS=4
 ./solution-parallel 1> x4-saida 2> x4-tempos
