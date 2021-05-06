@@ -22,10 +22,10 @@ export OMP_NUM_THREADS=2
 echo `./solution-parallel 1> x2-saida.o$PBS_JOBID 2> x2-tempos.o$PBS_JOBID`
 
 export OMP_NUM_THREADS=4
-echo `./solution-parallel 1> x2-saida.o$PBS_JOBID 2> x2-tempos.o$PBS_JOBID`
+echo `./solution-parallel 1> x4-saida.o$PBS_JOBID 2> x4-tempos.o$PBS_JOBID`
 
 export OMP_NUM_THREADS=8
-echo `./solution-parallel 1> x2-saida.o$PBS_JOBID 2> x2-tempos.o$PBS_JOBID`
+echo `./solution-parallel 1> x8-saida.o$PBS_JOBID 2> x8-tempos.o$PBS_JOBID`
 
 export OMP_NUM_THREADS=16
-echo `./solution-parallel 1> x2-saida.o$PBS_JOBID 2> x2-tempos.o$PBS_JOBID`
+echo `./solution-parallel 1> x16-saida.o$PBS_JOBID 2> x16-tempos.o$PBS_JOBID`
