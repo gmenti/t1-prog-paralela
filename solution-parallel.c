@@ -43,7 +43,7 @@ int maximum_sum_subsequence(int *arr, int n, int k)  {
     }
   
     for (l = 1; l <= k - 1; l++) { 
-        #pragma omp parallel for private(i,j)
+        #pragma omp parallel for private(j)
         for (i = 1; i < n; i++) {
             for (j = 0; j < i; j++) { 
                 if (arr[j] < arr[i]) { 
